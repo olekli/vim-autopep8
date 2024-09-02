@@ -90,7 +90,13 @@ if !exists("*Autopep8(...)")
             let autopep8_diff_type="horizontal"
         endif
 
-        let execmdline=autopep8_cmd.autopep8_pep8_passes.autopep8_selects.autopep8_ignores.autopep8_max_line_length.autopep8_aggressive.autopep8_indent_size.autopep8_range
+        if exists("g:autopep8_hang_closing") && g:autopep8_hang_closing
+            let autopep8_hang_closing=" --hang-closing"
+        else
+            let autopep8_hang_closing=""
+        endif
+
+        let execmdline=autopep8_cmd.autopep8_pep8_passes.autopep8_selects.autopep8_ignores.autopep8_max_line_length.autopep8_aggressive.autopep8_indent_size.autopep8_range.autopep8_hang_closing
 
         " current cursor
         " show diff if not explicitly disabled
